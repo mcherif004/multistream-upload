@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --neon: #00d2ff;
+  --neon-glow: rgba(0, 210, 255, 0.4);
+  --neon-dim: rgba(0, 210, 255, 0.1);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #000000;
+  color: #f4f4f5;
+}
+
+/* Neon scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 210, 255, 0.3);
+  border-radius: 2px;
+}
+
+/* Progress bar neon variant */
+.progress-neon > div {
+  background: linear-gradient(90deg, #00d2ff, #0080ff) !important;
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+}
