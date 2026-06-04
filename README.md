@@ -7,6 +7,16 @@
 
 **Elevator pitch:** Panel web para creadores que suben un mismo vídeo a varias redes. Un formulario global sincroniza título, descripción y tags; cada plataforma puede hacer override manual antes de un envío batch único.
 
+## Demo visual
+
+> Añade capturas tú mismo (~15 min): ver [../docs/screenshots/GUIA-IMAGENES-README.md](../docs/screenshots/GUIA-IMAGENES-README.md)
+
+Crea `docs/screenshots/upload-flow.png` y descomenta:
+
+```markdown
+<!-- ![Upload flow](docs/screenshots/upload-flow.png) -->
+```
+
 ## Architecture overview
 
 ```text
