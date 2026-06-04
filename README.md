@@ -5,7 +5,9 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**Elevator pitch:** Panel web para creadores que suben un mismo vídeo a varias redes. Un formulario global sincroniza título, descripción y tags; cada plataforma puede hacer override manual antes de un envío batch único.
+**Elevator pitch:** Panel web para creadores que preparan un mismo vídeo para varias redes. Un formulario global sincroniza título, descripción y tags; cada plataforma puede hacer override manual antes de un envío batch.
+
+> **Estado MVP:** login (Google), cuentas verificadas, metadatos y batch API funcionan; el upload guarda en almacenamiento local — los adaptadores de publicación en redes están en desarrollo.
 
 ## Demo visual
 
