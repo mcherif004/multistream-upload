@@ -16,6 +16,7 @@ Panel web para creadores que preparan un mismo vídeo para varias redes. Un form
 
 | Doc | Contenido |
 |-----|-----------|
+| **[BASE.md](BASE.md)** | **Inicio del proyecto — leer primero** |
 | [COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md) | Flujo técnico, límites MVP, entrevistas |
 | [VERCEL-DEPLOY.md](docs/VERCEL-DEPLOY.md) | Despliegue en Vercel |
 | [docs/screenshots/](docs/screenshots/README.md) | Cómo añadir capturas al README |
