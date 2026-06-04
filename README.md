@@ -1,48 +1,39 @@
 # MultiStream Upload
 
+![CI](https://github.com/mcherif004/multistream-upload/actions/workflows/ci.yml/badge.svg)
 ![Status](https://img.shields.io/badge/status-MVP-yellow)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**Elevator pitch:** Panel web para creadores que preparan un mismo vídeo para varias redes. Un formulario global sincroniza título, descripción y tags; cada plataforma puede hacer override manual antes de un envío batch.
+Panel web para creadores que preparan un mismo vídeo para varias redes. Un formulario global sincroniza título, descripción y tags; cada plataforma puede hacer override manual antes de un envío batch.
 
-> **Estado MVP:** login (Google), cuentas verificadas, metadatos y batch API funcionan; el upload guarda en almacenamiento local — los adaptadores de publicación en redes están en desarrollo.
+> **MVP:** login (Google), cuentas verificadas (oEmbed), metadatos y batch API operativos. El vídeo se guarda en `.uploads/` local — los adaptadores de publicación en redes están en desarrollo.
 
-## Demo visual
+<!-- Cuando tengas captura: ![Upload flow](docs/screenshots/upload-flow.png) -->
 
-> Añade capturas tú mismo (~15 min): ver [../docs/screenshots/GUIA-IMAGENES-README.md](../docs/screenshots/GUIA-IMAGENES-README.md)
+## Documentación
 
-Crea `docs/screenshots/upload-flow.png` y descomenta:
+| Doc | Contenido |
+|-----|-----------|
+| [COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md) | Flujo técnico, límites MVP, entrevistas |
+| [VERCEL-DEPLOY.md](docs/VERCEL-DEPLOY.md) | Despliegue en Vercel |
+| [docs/screenshots/](docs/screenshots/README.md) | Cómo añadir capturas al README |
 
-```markdown
-<!-- ![Upload flow](docs/screenshots/upload-flow.png) -->
-```
-
-## Architecture overview
+## Arquitectura
 
 ```text
 Browser (React)
-    → App Router pages (/upload, /accounts, /login)
-    → NextAuth (Google OAuth) + session middleware
-    → API Routes (/api/upload, /api/social/*)
-    → upload-engine (Zod validation + batch service)
-    → [MVP] mock adapter  |  [roadmap] YouTube / TikTok / Meta adapters
+  → App Router (/upload, /accounts, /login)
+  → NextAuth (Google OAuth)
+  → API Routes (/api/upload, /api/social/*)
+  → upload-engine (Zod + batch)
+  → [MVP] almacenamiento local  |  [roadmap] adapters YouTube / TikTok / Meta
 ```
 
-| Capa | Responsabilidad |
-|------|-----------------|
-| `app/(dashboard)/upload` | UI de metadatos multi-plataforma y estado de envío |
-| `lib/upload-engine/` | Validación, sync global → plataformas, batch submit |
-| `lib/auth/` | Sesión, cuentas vinculadas |
-| `app/api/upload` | Endpoint mock con latencia simulada (listo para adapters reales) |
+## Stack
 
-## Tech stack
-
-- **Frontend:** React 18, Next.js 14 (App Router), Tailwind CSS
-- **Forms:** React Hook Form + Zod
-- **Auth:** NextAuth (Google OAuth)
-- **Runtime:** Node.js 20+
+Next.js 14 · React 18 · TypeScript · Tailwind · React Hook Form · Zod · NextAuth
 
 ## Setup
 
@@ -51,36 +42,30 @@ git clone https://github.com/mcherif004/multistream-upload.git
 cd multistream-upload
 npm install
 cp .env.example .env.local
-# Editar AUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+# AUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 npm run dev
 ```
 
-Abre `http://localhost:3000` → redirige a `/upload` o `/login`.
+http://localhost:3000
 
-## Environment variables
+## Variables de entorno
 
-Ver [`.env.example`](.env.example):
-
-| Variable | Descripción |
-|----------|-------------|
-| `AUTH_SECRET` | Secreto de sesión (openssl rand -base64 32) |
-| `GOOGLE_CLIENT_ID` | OAuth Google Cloud Console |
-| `GOOGLE_CLIENT_SECRET` | OAuth Google Cloud Console |
+Ver [`.env.example`](.env.example): `AUTH_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`.
 
 ## Scripts
 
 | Comando | Uso |
 |---------|-----|
 | `npm run dev` | Desarrollo |
-| `npm run build` | Build producción |
+| `npm run build` | Producción |
 | `npm run lint` | ESLint |
-| `npm run typecheck` | TypeScript sin emit |
+| `npm run typecheck` | TypeScript |
 
-## Roadmap (CV / producción)
+## Roadmap
 
 - [ ] Adapters reales en `lib/upload-engine/adapters/`
-- [ ] Progreso por plataforma y reintentos
-- [ ] Cola asíncrona (worker + Redis) para publicación larga
+- [ ] Demo Vercel + badge en README
+- [ ] Cola asíncrona para publicaciones largas
 
 ## Author
 
